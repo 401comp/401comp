@@ -12,9 +12,9 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;background:rad
 body:after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(to bottom,#000,transparent 75%)}
 .scanlines{position:fixed;inset:0;pointer-events:none;z-index:10;background:repeating-linear-gradient(to bottom,transparent 0,transparent 3px,rgba(255,255,255,.008) 4px)}
 a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
-.header{height:84px;max-width:1240px;margin:auto;padding:10px 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.07);position:relative;z-index:5}
+.header{height:84px;max-width:1240px;margin:auto;padding:10px 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.12);position:sticky;top:0;z-index:20;background:rgba(5,7,10,.92);backdrop-filter:blur(14px)}
 .logo{height:64px;width:115px;overflow:hidden;display:block}.logo img{width:115px;height:64px;object-fit:cover;mix-blend-mode:screen}
-nav{display:flex;gap:34px}nav a,.nav-contact{color:#aab8c3;text-decoration:none;font-size:12px;font-weight:650;letter-spacing:.08em;text-transform:uppercase}nav a:hover{color:white}.nav-contact{color:white;border:1px solid #2a3b49;padding:10px 15px;border-radius:3px}
+nav{display:flex;gap:7px;padding:5px;border:1px solid #1c2d39;background:#080d12;border-radius:4px}nav a,.nav-contact{color:#aab8c3;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}nav a{padding:9px 11px;border-radius:2px}nav a:hover,nav a.active{color:#fff;background:linear-gradient(135deg,#0a94ed,#0055dd);box-shadow:0 0 18px rgba(0,110,255,.2)}.nav-contact{color:white;border:1px solid #2a3b49;padding:10px 15px;border-radius:3px}
 .hero{max-width:1240px;margin:auto;min-height:730px;padding:90px 28px;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:40px;position:relative}
 .kicker{font:700 11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.16em;color:#9eb0be}.kicker span{display:inline-block;width:28px;height:1px;background:var(--blue);vertical-align:middle;margin-right:10px}
 h1{font-size:clamp(54px,7vw,102px);line-height:.9;letter-spacing:-.065em;margin:22px 0 28px;max-width:760px}h1 em{font-style:normal;color:#7f919f}
@@ -32,12 +32,14 @@ footer{max-width:1240px;margin:auto;padding:26px 28px 42px;border-top:1px solid 
 @media(max-width:850px){.tab-intro{display:block}.tab-intro p{margin-top:16px}.tab-list{margin-inline:-4px;padding-inline:4px}.workbench{padding-top:65px}.tab-panel .cta{padding:34px 22px}.contact-panel{min-height:380px;padding:38px 20px}}
 @media(max-width:850px){.header nav{display:none}.hero{grid-template-columns:1fr;padding-top:65px}.hero-visual{min-height:390px;order:-1}.halo{width:300px;height:300px}.hero-logo{width:280px;height:240px}.terminal{right:0}.ticker{overflow:hidden;gap:30px;white-space:nowrap}.service-grid,.software-grid,.about,.process-grid{grid-template-columns:1fr}.app.wide{grid-column:auto}.catalog-head,.process-head{display:block}.catalog-head p,.process-head p{margin-top:18px}.cta{display:block}.cta .btn{margin-top:28px}footer{display:block}footer span{display:block;margin:8px 0}}
 
+.tab-intro{margin-bottom:0}
+@media(max-width:850px){.header{height:auto;min-height:74px;padding:8px 14px;flex-wrap:wrap;gap:7px}.header nav{display:flex;order:3;width:100%;justify-content:flex-start;overflow-x:auto}.header nav a{padding:8px 9px;font-size:10px;white-space:nowrap}.logo,.logo img{width:92px;height:52px}.nav-contact{padding:9px 11px;font-size:10px}}
 </style>
 <div class="scanlines"></div>
 <header class="header">
   <a class="logo" href="#top"><img src="401comp-mark.jpg" alt="401 comp"></a>
   <nav>
-    <a href="#workbench" data-tab-link="help">What I Do</a>
+    <a href="#workbench" data-tab-link="help" class="active" aria-current="page">What I Do</a>
     <a href="#workbench" data-tab-link="software">Software</a>
     <a href="#workbench" data-tab-link="coming">Coming Soon</a>
     <a href="#workbench" data-tab-link="about">My Story</a>
@@ -71,20 +73,13 @@ footer{max-width:1240px;margin:auto;padding:26px 28px 42px;border-top:1px solid 
 
 <section id="workbench" class="section workbench" aria-label="401comp workbench">
   <div class="tab-intro"><div><small class="kicker"><span></span> 401COMP</small><h2>What I do.</h2></div><p>I work directly with people who need practical computer help, and I build useful tools when off-the-shelf software just doesn’t cut it.</p></div>
-  <div class="tab-list" role="tablist" aria-label="401comp sections">
-    <button class="tab" id="tab-help" type="button" role="tab" aria-selected="true" aria-controls="panel-help">Computer help</button>
-    <button class="tab" id="tab-software" type="button" role="tab" aria-selected="false" aria-controls="panel-software">Software I build</button>
-    <button class="tab" id="tab-coming" type="button" role="tab" aria-selected="false" aria-controls="panel-coming">Coming soon</button>
-    <button class="tab" id="tab-about" type="button" role="tab" aria-selected="false" aria-controls="panel-about">My story</button>
-    <button class="tab" id="tab-contact" type="button" role="tab" aria-selected="false" aria-controls="panel-contact">Get in touch</button>
-  </div>
-  <section class="tab-panel" id="panel-help" role="tabpanel" tabindex="0" aria-labelledby="tab-help">
+  <section class="tab-panel" id="panel-help">
     <div class="section-title"><small>01</small><h2>Hands-on help for the tech in your life.</h2></div>
     <div class="service-grid"><article class="service featured"><div class="num">01</div><div><div class="tag">MAC + PC</div><h3>Computer Help, Diagnosis & Repair</h3><p>I work on Macs and PCs at your home or business. I trace the cause, explain the options clearly, and fix what actually needs fixing—without the big-box runaround.</p><ul><li>Slow, unstable, or cluttered Macs and PCs</li><li>Startup, storage, and background-process problems</li><li>Malware and unwanted-software cleanup</li><li>Wi-Fi, printers, and everyday network trouble</li><li>Backups, file organization, and new-computer setup</li><li>Real help below big-box store prices</li></ul></div><a href="mailto:contact@401comp.com?subject=I%20need%20computer%20help">Tell me what’s going on <b>→</b></a></article><article class="service"><div class="num">02</div><div><div class="tag">CUSTOM</div><h3>Useful Software, Built Around Real Work</h3><p>When a generic app gets in the way, I build around the people doing the work. I listen, map the real workflow, and make the pieces fit.</p><div class="code-chip">listen → map workflows → connect the pieces → build</div></div><a href="mailto:contact@401comp.com">Let’s talk <b>→</b></a></article></div>
     <div class="process"><div class="process-wrap"><div class="process-head"><div><small>HOW I WORK</small><h2>No mystery work. No pressure.</h2></div><p>You get a diagnosis, a straight answer, and a practical path forward before I start changing things.</p></div><div class="process-grid"><article class="process-step"><b>01 / START HERE</b><h3>Tell me what’s happening.</h3><p>Send a note about the device, the problem, and when it started. “It’s just weird” is a perfectly valid opening statement.</p></article><article class="process-step"><b>02 / DIAGNOSE</b><h3>I trace the cause.</h3><p>I look past the symptom to find the actual fault instead of throwing random fixes at the wall.</p></article><article class="process-step"><b>03 / EXPLAIN</b><h3>You get clear options.</h3><p>I explain what I found in normal language, what matters, and what the fix involves before moving ahead.</p></article><article class="process-step"><b>04 / RESOLVE</b><h3>Get it sorted.</h3><p>The goal is a computer that works properly—and a clear answer you can trust when the job is done.</p></article></div></div></div>
     <div class="cta"><div><small>READY WHEN YOU ARE</small><h2>Need a human being<br>who actually listens?</h2></div><a class="btn primary" href="mailto:contact@401comp.com?subject=I%20need%20computer%20help">Get computer help ↗</a></div>
   </section>
-  <section class="tab-panel software-panel" id="panel-software" role="tabpanel" tabindex="0" aria-labelledby="tab-software" hidden>
+  <section class="tab-panel software-panel" id="panel-software" hidden>
   <div class="catalog-head">
     <div><small>TOOLS I’VE BUILT // 06 APPS</small><h2>Software I build because I needed it.</h2></div>
     <p>Projects from the bench: useful tools for real annoyances, built by someone who understands the machinery under the hood.</p>
@@ -98,34 +93,25 @@ footer{max-width:1240px;margin:auto;padding:26px 28px 42px;border-top:1px solid 
     <article class="app"><div class="app-top"><span>PN-07</span><span>macOS 10.15+</span></div><h3>Card-Sharp</h3><p>Practice blackjack basic strategy with a real finite shoe.</p><small>Python · Tkinter · SQLite</small><a href="https://github.com/401comp/Card-Sharp" target="_blank" rel="noopener">Source <b>↗</b></a></article>
   </div>
   </section>
-  <section class="tab-panel contact-panel" id="panel-coming" role="tabpanel" tabindex="0" aria-labelledby="tab-coming" hidden><div><small class="kicker"><span></span> IN DEVELOPMENT</small><h2>Prophesy<br>Librarian.</h2><p>A forthcoming Mac companion for organizing and working with Rocktron Prophesy II preset libraries. Built by a player, for players who would rather spend their time dialing in sounds than wrestling with old-school data.</p><div class="code-chip">coming soon // details to follow</div><div class="trust-row"><span>Mac companion</span><span>Preset libraries</span><span>Built from the bench</span></div></div></section>
-  <section class="tab-panel about-panel" id="panel-about" role="tabpanel" tabindex="0" aria-labelledby="tab-about" hidden><div class="about"><div class="about-mark">401</div><div><small>MY STORY</small><h2>One person.<br>One bench.</h2><p>401comp is my independent computer-help shop. It started with a two-year Computer Information Systems degree from New England Institute of Technology, where peer-tutoring coursework turned into a teaching offer at graduation — a new job's timing meant taking a different path instead.</p><p>From there came programmer/analyst work on healthcare systems, including MUMPS, and later a small business fixing other people's Windows machines.</p><p>These days, I bring that same hands-on, diagnosis-first approach to every problem. I’m not here to guess, upsell, or throw software at something until it shuts up. I’m here to find what’s actually wrong, fix it properly, and leave you with a clear answer and a product you can trust.</p></div></div></section>
-  <section class="tab-panel contact-panel" id="panel-contact" role="tabpanel" tabindex="0" aria-labelledby="tab-contact" hidden><div><small class="kicker"><span></span> READY WHEN YOU ARE</small><h2>Let’s talk about<br>what’s going on.</h2><p>Tell me what device is acting up, what it’s doing, and when it started. A plain-English version is perfect—no technical dance required.</p><a class="btn primary" href="mailto:contact@401comp.com?subject=I%20need%20computer%20help">Get computer help <b>↗</b></a><div class="trust-row"><span>Mac + PC</span><span>Home + small business</span><span>Diagnosis first</span></div></div></section>
+  <section class="tab-panel contact-panel" id="panel-coming" hidden><div><small class="kicker"><span></span> IN DEVELOPMENT</small><h2>Prophesy<br>Librarian.</h2><p>A forthcoming Mac companion for organizing and working with Rocktron Prophesy II preset libraries. Built by a player, for players who would rather spend their time dialing in sounds than wrestling with old-school data.</p><div class="code-chip">coming soon // details to follow</div><div class="trust-row"><span>Mac companion</span><span>Preset libraries</span><span>Built from the bench</span></div></div></section>
+  <section class="tab-panel about-panel" id="panel-about" hidden><div class="about"><div class="about-mark">401</div><div><small>MY STORY</small><h2>One person.<br>One bench.</h2><p>401comp is my independent computer-help shop. It started with a two-year Computer Information Systems degree from New England Institute of Technology, where peer-tutoring coursework turned into a teaching offer at graduation — a new job's timing meant taking a different path instead.</p><p>From there came programmer/analyst work on healthcare systems, including MUMPS, and later a small business fixing other people's Windows machines.</p><p>These days, I bring that same hands-on, diagnosis-first approach to every problem. I’m not here to guess, upsell, or throw software at something until it shuts up. I’m here to find what’s actually wrong, fix it properly, and leave you with a clear answer and a product you can trust.</p></div></div></section>
+  <section class="tab-panel contact-panel" id="panel-contact" hidden><div><small class="kicker"><span></span> READY WHEN YOU ARE</small><h2>Let’s talk about<br>what’s going on.</h2><p>Tell me what device is acting up, what it’s doing, and when it started. A plain-English version is perfect—no technical dance required.</p><a class="btn primary" href="mailto:contact@401comp.com?subject=I%20need%20computer%20help">Get computer help <b>↗</b></a><div class="trust-row"><span>Mac + PC</span><span>Home + small business</span><span>Diagnosis first</span></div></div></section>
 </section>
 </main>
 
 <footer><span>401 comp © 2026 401comp — independent computer help.</span><span>Mac + PC • Diagnosis • Repair</span></footer>
 <script>
-  const tabs = [...document.querySelectorAll('.tab')];
   const panels = [...document.querySelectorAll('.tab-panel')];
-  function selectTab(name, focus = false) {
-    tabs.forEach(tab => {
-      const active = tab.id === `tab-${name}`;
-      tab.setAttribute('aria-selected', String(active));
-      tab.tabIndex = active ? 0 : -1;
-      if (active && focus) tab.focus();
-    });
+  const navLinks = [...document.querySelectorAll('nav [data-tab-link]')];
+  function selectTab(name) {
     panels.forEach(panel => panel.hidden = panel.id !== `panel-${name}`);
-  }
-  tabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => selectTab(tab.id.replace('tab-', '')));
-    tab.addEventListener('keydown', event => {
-      if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
-      event.preventDefault();
-      const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
-      selectTab(tabs[next].id.replace('tab-', ''), true);
+    navLinks.forEach(link => {
+      const active = link.dataset.tabLink === name;
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
     });
-  });
+  }
   document.querySelectorAll('[data-tab-link]').forEach(link => link.addEventListener('click', () => selectTab(link.dataset.tabLink)));
 </script>
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"acd8094d78ca46bea14ef9e0e51c124a"}'></script>
